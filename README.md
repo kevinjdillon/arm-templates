@@ -1,2 +1,2 @@
 # arm-templates
-ARM templates for test/dev and learning purposes
+ARM templates for test/dev and learning purposes!
