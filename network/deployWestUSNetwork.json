@@ -26,15 +26,21 @@
         {
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2017-05-10",
-            "name": "[concat(resourceGroup().name, '-NetworkDeployment')]",
-            "resourceGroup": "[resourceGroup().name]",
+            "name": "[concat(parameters('rgLocation'), '-NetworkDeployment')]",
+            "resourceGroup": "[parameters('rgName')]",
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri":"[concat('https://raw.githubusercontent.com/USAF690COS/AzureLabs/master/ArmTemplates/VM%20Templates/', parameters('vmList')[copyIndex()], '/azuredeploy.json')]",
+                    "uri":"https://raw.githubusercontent.com/kevinjdillon/arm-templates/refs/heads/main/network/vnetDeploy.json",
                     "contentVersion":"1.0.0.0"
+                },
+                "parametersLink": {
+                    "uri": "https://raw.githubusercontent.com/kevinjdillon/arm-templates/refs/heads/main/network/vnetDeploy.westus.parameters.json"
                 }
-            }  
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Resources/resourceGroups', parameters('rgName'))]"
+            ]
         }     
     ],
     "outputs": {}
