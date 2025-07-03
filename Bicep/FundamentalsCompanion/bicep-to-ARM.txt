@@ -1,0 +1,5 @@
+Compile/build bicep template into ARM:
+bicep build main.bicep
+
+Decompile ARM template into bicep:
+bicep Decompile
